@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class CricleArea {
+public class CircleArea {
     public static void main(String[] args) {
         int Radius;
         Scanner In = new Scanner(System.in);
