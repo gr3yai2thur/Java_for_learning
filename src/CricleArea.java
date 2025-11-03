@@ -11,6 +11,6 @@ public class CricleArea {
         area = 3.14 * (Radius * Radius);
 
         System.out.println("Area = " + area);
-
+        System.out.println("Kuy");
     }
 }
