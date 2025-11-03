@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class CricleArea {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         int Radius;
         Scanner In = new Scanner(System.in);
         System.out.print("Input Radius: ");
