@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class Mirror {
+public class MirrorByKhaw {
     public static void main(String[] args){
-        Mirror obj = new Mirror();
+        MirrorByKhaw obj = new MirrorByKhaw();
         int n = obj.Input("N : ");
         int[] data = new int[n];
         obj.getData(data);
