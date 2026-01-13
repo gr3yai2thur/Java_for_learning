@@ -1,0 +1,40 @@
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class randChar {
+    static void main(String[] args) {
+        Scanner In = new Scanner(System.in);
+        Random rand = new Random();
+
+        int n = In.nextInt();
+        int rd;
+        char[] data = new char[n];
+        boolean[] used = new boolean[26];
+
+        for (int i = 0; i < data.length; i++) {
+			rd = rand.nextInt(26);
+			if(!used[rd]){
+				used[rd] = true;
+				data[i] = (char)('A' + rd);
+			}
+			else{
+				i--;
+			}
+        }
+		
+		System.out.print("RAND : ");
+		for(int i=0;i<data.length;i++){
+			System.out.print(data[i] + " ");
+		}
+		System.out.println();
+		
+		Arrays.sort(data);
+		
+		System.out.print("SORT : ");
+		for(int i=data.length-1;i>=0;i--){
+			System.out.print(data[i] + " ");
+		}
+		System.out.println();
+    }
+}

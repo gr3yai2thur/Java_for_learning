@@ -1,0 +1,75 @@
+import java.util.Scanner;
+import java.util.Random;
+
+class  CH5EX_4
+{
+	public static void main(String[] args) 
+	{
+		Scanner In = new Scanner(System.in);
+		Random rand = new Random();
+		int M = In.nextInt();
+		int N = In.nextInt();
+		
+		int[][] data = new int[M][N];
+		double[][] avg = new double[M][N];
+		int[] sumData = new int[M*N];
+		
+		for (int i=0;i<data.length;i++)
+		{
+			for (int j=0;j<data[i].length;j++)
+			{
+				data[i][j] = rand.nextInt(2, 6);
+			}
+		}
+		
+		for (int i=0;i<data.length;i++)
+		{
+			for (int j=0;j<data[i].length;j++)
+			{
+				System.out.printf("%d\t", data[i][j]);
+			}
+			System.out.println();
+		}
+		
+		for (int i=0;i<data.length;i++)
+		{
+			for (int j=0;j<data[i].length;j++)
+			{
+				int sum = 0;
+				int count = 0;
+				
+				sum += data[i][j];
+				count++;
+				
+				if (i > 0)
+				{              
+					sum += data[i - 1][j];
+					count++;
+				}
+				if (j > 0)
+				{
+					sum += data[i][j - 1];
+                    count++;
+				}
+				if(i < M - 1)
+				{
+					sum += data[i + 1][j];
+                    count++;
+				}
+				if (j < N - 1)
+				{
+					sum += data[i][j + 1];
+                    count++;
+				}
+				avg[i][j] = (double) sum / count;
+			}
+		}
+		
+		for (int i = 0; i < M; i++) {
+            for (int j = 0; j < N; j++) {
+                System.out.printf("%.1f\t", avg[i][j]);
+            }
+            System.out.println();
+        }
+	}
+}
