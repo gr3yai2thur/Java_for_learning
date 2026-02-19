@@ -1,0 +1,37 @@
+import java.util.Date;
+import java.util.Locale;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+
+class api_SimpleDateFormat
+{
+    public static void main(String[] args) 
+    {
+        Date dt = new Date();
+        Locale lc = new Locale("en");
+		Calendar cl = Calendar.getInstance();
+        String str = "'Date': EEEE, dd MMMM, yyyy\n'Time' hh:mm:ss '@' a";
+        SimpleDateFormat sDF = new SimpleDateFormat(str, lc);
+        String x = sDF.format(dt);
+        System.out.println(x);
+		
+		String[] daysEN = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
+		int[] daysInMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
+		int dayNum = cl.get(Calendar.DAY_OF_MONTH);
+		int dayName = dt.getDay();
+		int month = dt.getMonth();
+		System.out.println("===================================================");
+		for(int i=0;i<daysEN.length;i++){
+			System.out.print(daysEN[i] + "\t");
+		}
+		System.out.println();
+		for(int i=0;i<=dayName;i++){
+			System.out.print(".\t");
+		}
+		for(int i=dayNum;i<=daysInMonth[month];i++){
+			System.out.print(i + "\t");
+			if(i % 7 == 6) System.out.println();
+		}
+		System.out.println();
+    }
+}
