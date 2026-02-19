@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+class Q2_2 
+{
+	public static void main(String[] args) 
+	{
+		Q2_2 obj = new Q2_2();
+		String str = obj.Input("Enter String: ");
+		System.out.println(obj.Index2ToUpperCase(str));
+	}
+	
+	String Input(String UI){
+		Scanner In = new Scanner(System.in);
+		System.out.print(UI);
+		return In.nextLine();
+	}
+	
+	String Index2ToUpperCase(String str){
+		char[] x = str.toCharArray();
+		String message = "";
+		for(int i=0;i<x.length;i++){
+			int y = x[i];
+			if(i % 2 == 0){
+				x[i] = Character.toUpperCase(x[i]);
+			}
+			message += x[i];
+		}
+		return message;
+	}
+}

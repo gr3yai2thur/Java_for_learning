@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+class Q2_6 
+{
+	public static void main(String[] args) 
+	{
+		Q2_6 obj = new Q2_6();
+		String str = obj.Input("ENter txt: ");
+		System.out.println(obj.startEqualEnd(str));
+	}
+	
+	String Input(String UI){
+		Scanner In = new Scanner(System.in);
+		System.out.print(UI);
+		return In.nextLine();
+	}
+	
+	boolean startEqualEnd(String str){
+		str = str.toLowerCase();
+		char ch1 = str.charAt(0);
+		char ch2 = str.charAt(str.length() - 1);
+		if(ch1 == ch2){
+			return true;
+		}
+		return false;
+	}
+}

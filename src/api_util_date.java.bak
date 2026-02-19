@@ -1,0 +1,19 @@
+import java.util.Date;
+
+class api_util_date 
+{
+	public static void main(String[] args) 
+	{
+		int year = 2006;
+		int month = 0;
+		int day = 8;
+
+		Date dt = new Date(year, month, day);
+		System.out.println(dt);
+
+		System.out.println();
+
+		int days = dt.getDay();
+		System.out.println(days);
+	}
+}

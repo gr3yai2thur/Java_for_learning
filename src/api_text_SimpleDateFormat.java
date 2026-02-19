@@ -1,0 +1,16 @@
+import java.util.Date;
+import java.util.Locale;
+import java.text.SimpleDateFormat;
+
+class api_text_SimpleDateFormat
+{
+	public static void main(String[] args) 
+	{
+		Date dt = new Date();
+		Locale lc = new Locale("EN");
+		String str = "EEEE, dd MMMM, yyyy hh:mm:ss aaa";
+		SimpleDateFormat sDF = new SimpleDateFormat(str, lc);
+		String x = sDF.format(dt);
+		System.out.println(x);	
+	}
+}

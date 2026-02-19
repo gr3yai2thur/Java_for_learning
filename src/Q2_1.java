@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+class Q2_1 
+{
+	public static void main(String[] args) 
+	{
+		Q2_1 obj = new Q2_1();
+		String str = obj.Input("Enter String: ");
+		System.out.println(obj.sum(str));
+	}
+	
+	String Input(String UI){
+		Scanner In = new Scanner(System.in);
+		System.out.print(UI);
+		return In.nextLine();
+	}
+	
+	int sum(String str){
+		int sum = 0;
+		for(int i=0;i<str.length();i++){
+			if(Character.isDigit(str.charAt(i))){
+				sum += Integer.parseInt(String.valueOf(str.charAt(i)));
+			}
+		}
+		return sum;
+	}
+}
