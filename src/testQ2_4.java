@@ -15,15 +15,7 @@ class testQ2_4
 	}
 	
 	boolean isPhoneNum(String str){
-		if(str.length() > 10) return false;
-		if(Integer.parseInt(String.valueOf(str.charAt(0))) != 0) return false;
-		
-		for(int i=0;i<str.length();i++){
-			if(!Character.isDigit(str.charAt(i))){
-				return false;
-			}
-		}
-		return true;
+		return str.matches("0\\d{9}$");
 	}
 	
 	int sumPhoneNum(String str){
@@ -48,4 +40,3 @@ class testQ2_4
 			System.out.println("Incorrect");
 		}
 	}
-}
