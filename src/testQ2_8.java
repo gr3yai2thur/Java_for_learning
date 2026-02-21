@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+class testQ2_8 
+{
+	public static void main(String[] args) 
+	{
+		testQ2_8 obj = new testQ2_8();
+		String str = obj.Input("Enter student ID: ");
+		str = str.replace(" ", "");
+		obj.ui(str);
+	}
+	
+	String Input(String UI){
+		Scanner In= new Scanner(System.in);
+		System.out.print(UI);
+		return In.nextLine();
+	}
+	
+	boolean isStuId(String str){
+		if(str.length() != 11) return true;
+		return false;
+	}
+	
+	boolean isAlphabetInStuId(String str){
+		for(int i=0;i<str.length();i++){
+			if(!Character.isDigit(str.charAt(i)))  return true;
+		}
+		return false;
+	}
+	
+	int sumStuId(String str){
+		int sum = 0;
+		if(!isAlphabetInStuId(str) && !isStuId(str)){
+			for(int i=0;i<str.length();i++){
+				sum += Integer.parseInt(String.valueOf(str.charAt(i))) * (11 - i);
+			}
+		}
+		return sum;
+	}
+	
+	String lastId(String str){
+		return String.valueOf(9 - (sumStuId(str) % 9));
+	}
+	
+	String newStuId(String str){
+		return str += "-" + lastId(str);
+		
+	}
+	
+	void ui(String str){
+		if(isStuId(str)) System.out.println("ERROR");
+		if(isStuId(str)) System.out.println(str + " is length != 11");
+		if(isAlphabetInStuId(str)) System.out.println(str + " is NOT Digits");
+		if(!isAlphabetInStuId(str) && !isStuId(str)) System.out.println("The NEW Student ID is " + newStuId(str));
+	}
+}

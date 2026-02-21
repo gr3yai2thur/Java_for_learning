@@ -1,0 +1,124 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+class testQ2_7_1 
+{
+    public static void main(String[] args) 
+    {
+        testQ2_7_1 obj = new testQ2_7_1();
+
+        char[][] table = new char[6][10];
+        for (int i=0;i<6;i++){
+            Arrays.fill(table[i], '_');
+        }
+        obj.booking(table);
+    }
+
+    String Input(String UI) {
+        Scanner In = new Scanner(System.in);
+        System.out.print(UI);
+        return In.nextLine();
+    }
+
+    void printTable2D(char[][] table) {
+        System.out.println("Welcome to DumDin AirLine BY KuboTa747");
+        System.out.println("   0  1  2  3  4  5  6  7  8  9");
+
+        for (int i = 0; i < table.length; i++) {
+            char rowName = (char) ('A' + i);
+            printRow2D(String.valueOf(rowName), table[i]);
+            if (i==2) System.out.println();
+        }
+
+        System.out.println();
+    }
+
+    void printRow2D(String rowName, char[] row) {
+        System.out.print(rowName + "| ");
+        for (int j = 0; j < row.length; j++) {
+            System.out.print(row[j] + "  ");
+        }
+        System.out.println();
+    }
+
+    void booking(char[][] table){
+        int count = 0;
+
+        while(true){
+            char menu = Input("Enter Menu(B/E): ").charAt(0);
+
+            if(menu == 'e' || menu == 'E'){
+                printTable2D(table);
+                System.out.printf("%d People BOOKING for Fly BY KuboTa747\n", count);
+                break;
+            }
+
+            if(menu != 'b' && menu != 'B'){
+				System.out.println();
+                System.out.println("MENU " + menu + " DONT HAVE");
+				System.out.println();
+                continue;
+            }
+
+            char row = Input("Enter row: ").charAt(0);
+            int col = Integer.parseInt(Input("Enter col: "));
+
+            if(!isValidSeat(row, col)){
+				System.out.println();
+                System.out.printf("SEAT \"%c%d\" NOT HAVE\n", row, col);
+				System.out.println();
+                continue;
+            }
+
+            int i = 0;
+
+            switch(row){
+                case 'a': case 'A': i = 0; break;
+                case 'b': case 'B': i = 1; break;
+                case 'c': case 'C': i = 2; break;
+                case 'd': case 'D': i = 3; break;
+                case 'e': case 'E': i = 4; break;
+                case 'f': case 'F': i = 5; break;
+            }
+
+            if(isEmpty(i, col, table)){
+                switch(row){
+                    case 'a': case 'A': table[0][col] = 'X'; count++; break;
+                    case 'b': case 'B': table[1][col] = 'X'; count++; break;
+                    case 'c': case 'C': table[2][col] = 'X'; count++; break;
+                    case 'd': case 'D': table[3][col] = 'X'; count++; break;
+                    case 'e': case 'E': table[4][col] = 'X'; count++; break;
+                    case 'f': case 'F': table[5][col] = 'X'; count++; break;
+                }
+            }
+            else{
+				System.out.println();
+                System.out.printf("SEAT \"%c%d\" NOT Empty\n", row, col);
+				System.out.println();
+            }
+
+            printTable2D(table);
+        }
+    }
+
+    boolean isEmpty(int i, int j, char[][] table){
+        if(table[i][j] != '_') return false;
+        return true;
+    }
+
+    boolean isValidSeat(char row, int col) {
+        if (!(row == 'A' || row == 'a' ||
+              row == 'B' || row == 'b' ||
+              row == 'C' || row == 'c' ||
+              row == 'D' || row == 'd' ||
+              row == 'E' || row == 'e' ||
+              row == 'F' || row == 'f')) {
+            return false;
+        }
+
+        if (col < 0 || col > 9)
+            return false;
+
+        return true;
+    }
+}

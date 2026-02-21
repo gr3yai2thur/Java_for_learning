@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+class testQ2_5 
+{
+	public static void main(String[] args) 
+	{
+		testQ2_5 obj = new testQ2_5();
+		int x1 = Integer.parseInt(obj.Input("Enter x1: "));
+		int y1 = Integer.parseInt(obj.Input("Enter y1: "));
+		int x2 = Integer.parseInt(obj.Input("Enter x2: "));
+		int y2 = Integer.parseInt(obj.Input("Enter y2: "));
+		int x3 = Integer.parseInt(obj.Input("Enter x3: "));
+		int y3 = Integer.parseInt(obj.Input("Enter y3: "));
+		
+		System.out.println("\t(" + x1 + "," + y1 +")");
+		System.out.println();
+		System.out.println("(" + x2 + "," + y2 + ")" + "\t\t" + "(" + x3 + "," + y3 + ")");
+		
+		double a = obj.getSide(x1, y1, x2, y2);
+		double b = obj.getSide(x2, y2, x3, y3);
+		double c = obj.getSide(x3, y3, x1, y1);
+		double s = obj.getS(a, b, c);
+		
+		obj.ui(s, a, b, c);
+	}
+	
+	String Input(String UI){
+		Scanner In= new Scanner(System.in);
+		System.out.print(UI);
+		return In.nextLine();
+	}
+	
+	double getSide(int a, int b, int c, int d){
+		return Math.sqrt(Math.pow(a - c, 2) + Math.pow(b - d, 2));
+	}
+	
+	double getS(double a, double b, double c){
+		return (a + b + c) / 2;
+	}
+	
+	double getArea(double s, double a, double b, double c){
+		return Math.sqrt(s*(s-1)*(s-b)*(s-c));
+	}
+	
+	void ui(double s, double a, double b, double c){
+		System.out.println();
+		System.out.println("a:\t\t" + a);
+		System.out.println("b:\t\t" + b);
+		System.out.println("c:\t\t" + c);
+		System.out.println("S:\t\t" + s);
+		System.out.println("AREA:\t" + getArea(s, a, b, c));
+	}
+}

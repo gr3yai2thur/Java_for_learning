@@ -1,0 +1,130 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+class testQ2_7 {
+
+    public static void main(String[] args) {
+
+        testQ2_7 obj = new testQ2_7();
+        char str = obj.Input("Enter Menu(B/E): ").charAt(0);
+
+        char[] a = new char[10];
+        char[] b = new char[10];
+        char[] c = new char[10];
+        char[] d = new char[10];
+        char[] e = new char[10];
+        char[] f = new char[10];
+
+        Arrays.fill(a, '_');
+        Arrays.fill(b, '_');
+        Arrays.fill(c, '_');
+        Arrays.fill(d, '_');
+        Arrays.fill(e, '_');
+        Arrays.fill(f, '_');
+
+		int count = 0;
+        for(;;) {
+			if (str == 'e' || str == 'E') break;
+			obj.printSeat(a, b, c, d, e, f);
+            char row = obj.Input("Enter row: ").charAt(0);
+            int col = Integer.parseInt(obj.Input("Enter col: "));
+
+            if (col < 0 || col >= 10) {
+                System.out.println("SEAT " + row + col + " NOT HAVE");
+				continue;
+            }
+            switch (row) {
+                case 'a':
+                case 'A':
+                    if (a[col] != 'X') a[col] = 'X';
+                    else{
+						System.out.println("SEAT " + row + col + " NOT Empty");
+						continue;
+					}
+                    break;
+
+                case 'b':
+                case 'B':
+                    if (b[col] != 'X') b[col] = 'X';
+                    else{
+						System.out.println("SEAT " + row + col + " NOT Empty");
+						continue;
+					}
+                    break;
+
+                case 'c':
+                case 'C':
+                    if (c[col] != 'X') c[col] = 'X';
+                    else{
+						System.out.println("SEAT " + row + col + " NOT Empty");
+						continue;
+					}
+                    break;
+
+                case 'd':
+                case 'D':
+                    if (d[col] != 'X') d[col] = 'X';
+                    else{
+						System.out.println("SEAT " + row + col + " NOT Empty");
+						continue;
+					}
+                    break;
+
+                case 'e':
+                case 'E':
+                    if (e[col] != 'X') e[col] = 'X';
+                    else{
+						System.out.println("SEAT " + row + col + " NOT Empty");
+						continue;
+					}
+                    break;
+
+                case 'f':
+                case 'F':
+                    if (f[col] != 'X') f[col] = 'X';
+                    else{
+						System.out.println("SEAT " + row + col + " NOT Empty");
+						continue;
+					}
+                    break;
+
+                default:
+                    System.out.println("Row invalid!");
+                    break;
+            }
+			count++;
+            obj.printSeat(a, b, c, d, e, f);
+
+            str = obj.Input("Enter Menu(B/E): ").charAt(0);
+        }
+		System.out.println(count + " People BOOKING for Fly BY Kubo747");
+    }
+
+	void printSeat(char[] a, char[] b, char[] c, char[] d, char[] e, char[] f) {
+
+        System.out.println("Welcome to DumDin AirLine BY KuboTa747");
+        System.out.println("\t0\t1\t2\t3\t4\t5\t6\t7\t8\t9");
+
+        printRow("A", a);
+        printRow("B", b);
+        printRow("C", c);
+        printRow("D", d);
+        printRow("E", e);
+        printRow("F", f);
+
+        System.out.println();
+    }
+
+	void printRow(String rowName, char[] row) {
+        System.out.print(rowName + "|\t");
+        for (int i = 0; i < 10; i++)
+            System.out.print(row[i] + "\t");
+        System.out.println();
+    }
+
+    String Input(String UI) {
+        Scanner In = new Scanner(System.in);
+        System.out.print(UI);
+        return In.nextLine();
+    }
+}
