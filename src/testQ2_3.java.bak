@@ -34,8 +34,8 @@ class  testQ2_3
 	}
 	
 	void ui(double sum){
-		System.out.printf("All price\t:%f BTH.\n", sum);
-		System.out.printf("Sale\t:%f BTH.\n", sale(sum));
-		System.out.printf("Pay\t:%f BTH.\n", pay(sum));
+		System.out.printf("All price\t:%.1f BTH.\n", sum);
+		System.out.printf("Sale\t:%.2f BTH.\n", sale(sum));
+		System.out.printf("Pay\t:%.2f BTH.\n", pay(sum));
 	}
 }

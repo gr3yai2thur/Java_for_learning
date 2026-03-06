@@ -23,6 +23,8 @@ class api_SimpleDateFormat
 	}
 	
 	void printCalendar(){
+		Date dt = new Date();
+		Calendar cl = Calendar.getInstance();
 		String[] daysEN = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
         int[] daysInMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
         int dayNum = cl.get(Calendar.DAY_OF_MONTH);
