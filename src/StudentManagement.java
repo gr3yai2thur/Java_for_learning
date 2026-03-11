@@ -49,7 +49,6 @@ public class StudentManagement {
         String stuID = input("Enter student ID for update: ");
         if(id.contains(stuID)){
             int index = id.indexOf(stuID);
-            id.set(index, input("Enter new ID: "));
             name.set(index, input("Enter new name: "));
             age.set(index, input("Enter new age: "));
             gpa.set(index, input("Enter new gpa: "));
