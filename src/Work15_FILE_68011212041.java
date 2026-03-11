@@ -1,0 +1,116 @@
+import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.util.Scanner;
+import java.util.Locale;
+import java.util.Date;
+import java.io.File;
+
+
+class Work15_FILE_68011212041
+{
+    public static void main(String[] args) 
+    {
+        Work15_FILE_68011212041 obj = new Work15_FILE_68011212041();
+        obj.write();
+		obj.ui();
+    }
+    
+    String Input(String UI){
+        Scanner In = new Scanner(System.in);
+        System.out.print(UI);
+        return In.nextLine();
+    }
+
+    void write(){
+        try{
+            String filename = "Work15_FILE_68011212041.xls";
+            File file = new File(filename);
+
+            FileWriter fW = new FileWriter(file, true);
+
+            if(file.length() == 0){
+                fW.write("NO\tNAME\tCODE\tMIDTERM\tFINAL\tSCORE\tGRADE\tDATE\n");
+            }
+			
+			BufferedReader br = new BufferedReader(new FileReader("Work15_FILE_68011212041.xls"));
+
+			int count = 0;
+			while(br.readLine() != null){
+				count++;
+			}
+			
+			int no = 0;
+			if(file.length() == 0) no = count+1;
+            else no = count;
+
+            for(;;){
+                String name = Input("Enter name: ");
+                if(name.equalsIgnoreCase("stop")) break;
+
+                String code = Input("Enter code: ");
+                String mid = Input("Enter midterm: ");
+                String fin = Input("Enter final: ");
+
+                int score = sum(mid, fin);
+
+                char grade;
+                if(score >= 80) grade = 'A';
+                else if(score >= 70) grade = 'B';
+                else if(score >= 60) grade = 'C';
+                else if(score >= 50) grade = 'D';
+                else grade = 'F';
+
+                fW.write(no + "\t" + name + "\t" +
+						 code + "\t" + mid + "\t" +
+						 fin + "\t" +  score + "\t" +
+						 grade + "\t" + getDate() + "\n");
+
+                no++;
+            }
+
+            fW.close();
+        }
+        catch (IOException err){
+            System.out.println(err);
+        }
+    }
+
+    int sum(String a, String b){
+        return Integer.parseInt(a) + Integer.parseInt(b);
+    }
+
+    String getDate(){
+        Date dt = new Date();
+        Locale lc = new Locale("th","TH");
+        String str = "dd/MM/yy - HH:mm";
+        SimpleDateFormat sDF = new SimpleDateFormat(str, lc);
+        return sDF.format(dt);
+    }
+
+	void ui(){
+		try{
+			String x;
+			char ch;
+
+			String filename = "Work15_FILE_68011212041.xls";
+			BufferedReader bfR = new BufferedReader(new FileReader(filename));
+			for(;;){
+				x = bfR.readLine();
+				if(x == null) break;
+				System.out.println(x);
+			}
+		}
+		catch (FileNotFoundException err){
+			System.out.println(err);
+			System.out.println();
+		}
+		catch (IOException err){
+			System.out.println(err);
+			System.out.println();
+		}
+	}
+}
