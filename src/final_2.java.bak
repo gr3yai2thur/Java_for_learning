@@ -1,0 +1,52 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.IOException;
+
+class final_2 
+{
+	public static void main(String[] args) 
+	{
+		ArrayList<String> txt = new ArrayList<String>();
+		final_2 obj = new final_2();
+		obj.getTxt(txt);
+		obj.charToAscii(txt);
+	}
+	
+	String Input(String UI) {
+        Scanner In = new Scanner(System.in);
+        System.out.print(UI);
+        return In.nextLine();
+    }
+	
+	void getTxt(ArrayList<String> txt){
+		for(;;){
+			String str = Input("");
+			txt.add(str);
+			if(str.equalsIgnoreCase("xxx")) break;
+		}
+	}
+	
+	void charToAscii(ArrayList<String> txt){
+		String temp = "";
+		for (int i = 0; i < txt.size(); i++) {
+
+            if (txt.get(i).equalsIgnoreCase("xxx")) {
+                txt.set(i, "Exit...");
+                continue;
+            }
+
+            String newTxt = "";
+
+            for (int j = 0; j < txt.get(i).length(); j++) {
+
+                int ascii = (int)txt.get(i).charAt(j);
+                newTxt += ascii;
+            }
+            txt.set(i, newTxt);
+        }
+		System.out.println();
+		for(int i=0; i<txt.size();i++){
+			System.out.println(txt.get(i));
+		}
+	}
+}

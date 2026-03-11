@@ -1,0 +1,64 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class final_1 {
+
+    public static void main(String[] args) {
+        ArrayList<String> txt = new ArrayList<String>();
+        final_1 obj = new final_1();
+        obj.getTxt(txt);
+        obj.decode(txt);
+    }
+
+    String Input(String UI) {
+        Scanner In = new Scanner(System.in);
+        System.out.print(UI);
+        return In.nextLine();
+    }
+
+    void getTxt(ArrayList<String> txt) {
+        for (;;) {
+            String str = Input("Enter txt: ");
+            txt.add(str);
+            if (str.equalsIgnoreCase("xxx"))
+                break;
+        }
+    }
+
+    void decode(ArrayList<String> txt) {
+
+        for (int i = 0; i < txt.size(); i++) {
+
+            if (txt.get(i).equalsIgnoreCase("xxx")) {
+                txt.set(i, "Exit...");
+                continue;
+            }
+
+            String newTxt = "";
+
+            for (int j = 0; j < txt.get(i).length(); j++) {
+
+                char ch = txt.get(i).charAt(j);
+
+                if (ch == '^') ch = 'i';
+                if (ch == '@') ch = 'a';
+                if (ch == '*') ch = 'o';
+                if (ch == '!') ch = 'A';
+                if (ch == '$') ch = 'e';
+                if (ch == ')') ch = 'u';
+                if (ch == '#') ch = 'E';
+                if (ch == '%') ch = 'I';
+                if (ch == '(') ch = 'U';
+                if (ch == '&') ch = 'O';
+
+                newTxt += ch;
+            }
+
+            txt.set(i, newTxt);
+        }
+		for(int i=0; i<txt.size();i++){
+			System.out.println(txt.get(i));
+		}
+        
+    }
+}
