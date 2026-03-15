@@ -86,7 +86,7 @@ public class StudentManagement {
 
             String choices = input("Enter choices: ");
 
-            if(choices.equalsIgnoreCase("E")) break;
+            if(choice5s.equalsIgnoreCase("E")) break;
             else if(choices.equalsIgnoreCase("A")) addStudent();
             else if(choices.equalsIgnoreCase("S")) showAllStudent();
             else if(choices.equalsIgnoreCase("R")) search();
