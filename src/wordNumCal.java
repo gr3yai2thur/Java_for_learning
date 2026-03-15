@@ -1,0 +1,68 @@
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+
+class wordNumCal 
+{
+    public static void main(String[] args) 
+    {
+        String str       = readFile("wordNumCal.txt");
+        String[] num     = str.split("[-+*/]");
+        char[] op        = str.replaceAll("[^-+*/]", "").toCharArray();
+        String[] realNum = wordsToNumbers(num);
+        int result       = calculate(realNum, op);
+
+        System.out.println(realNum[0] + " " + op[0] + " " + realNum[1] + " = " +  result);
+    }
+
+    static String readFile(String filename) {
+        String str = "";
+        String line;
+        try {
+            BufferedReader bfR = new BufferedReader(new FileReader(filename));
+            for (; (line = bfR.readLine()) != null;) {
+                str += line;
+            }
+        }
+        catch (FileNotFoundException err) { System.out.println(err.getMessage()); }
+        catch (IOException err)           { System.out.println(err.getMessage()); }
+        return str;
+    }
+
+    static String[] wordsToNumbers(String[] num) {
+        String[] realNum = new String[num.length];
+        for (int i = 0; i < num.length; i++) {
+            realNum[i] = "";
+            String[] temp = num[i].split(" ");
+            for (int j = 0; j < temp.length; j++) {
+                if (temp[j].equalsIgnoreCase("zero"))  realNum[i] += "0";
+                if (temp[j].equalsIgnoreCase("one"))   realNum[i] += "1";
+                if (temp[j].equalsIgnoreCase("two"))   realNum[i] += "2";
+                if (temp[j].equalsIgnoreCase("three")) realNum[i] += "3";
+                if (temp[j].equalsIgnoreCase("four"))  realNum[i] += "4";
+                if (temp[j].equalsIgnoreCase("five"))  realNum[i] += "5";
+                if (temp[j].equalsIgnoreCase("six"))   realNum[i] += "6";
+                if (temp[j].equalsIgnoreCase("seven")) realNum[i] += "7";
+                if (temp[j].equalsIgnoreCase("eight")) realNum[i] += "8";
+                if (temp[j].equalsIgnoreCase("nine"))  realNum[i] += "9";
+            }
+        }
+        return realNum;
+    }
+
+    static int calculate(String[] realNum, char[] op) {
+        int result = Integer.parseInt(realNum[0]);
+        for (int i = 0; i < op.length; i++) {
+            int next = Integer.parseInt(realNum[i + 1]);
+            if (op[i] == '+') result += next;
+            if (op[i] == '-') result -= next;
+            if (op[i] == '*') result *= next;
+            if (op[i] == '/') {
+                if (next == 0) { System.out.println("Cant divided by Zero!"); return 0; }
+                result /= next;
+            }
+        }
+        return result;
+    }
+}
