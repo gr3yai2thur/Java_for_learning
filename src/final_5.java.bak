@@ -28,7 +28,7 @@ class final_5
 		{
 			String filename = "final_5.xls";
 			File fl = new File(filename);
-			FileWriter fW = new FileWriter(filename);
+			FileWriter fW = new FileWriter(filename, true);
 			
 			if(fl.length() == 0){
 				fW.write("NAME\tPRICE\tSALE%\tSALE\tPAY\tDATE-TIME\n");

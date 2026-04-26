@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+class hee
+{
+	public static void main(String[] args) 
+	{
+		Scanner In = new Scanner(System.in);
+		
+		int money = In.nextInt();
+		int mk_price = In.nextInt();
+		double THcoin = money / 731137;
+		
+		double income = 0.00;
+		if(mk_price > 731137){
+			income = money * 0.0325;
+		}
+		else{
+			income = 0 - (money * 0.00012);
+		}
+		double THcoin_income = income / 731137;
+		double money_currently = money + income;
+		double THCoin_currently = money_currently / 731137;
+		
+		System.out.printf("%-15s%15.3f\n", "STANDARD PRICE", 731137.00);
+		System.out.printf("%-15s%15.3f\n", "MARKET PRICE", (double)mk_price);
+		System.out.printf("***********************************************\n");
+		System.out.printf("%-15s%16s%15s\n", "ITEM", "BTH.", "THcoin");
+		System.out.printf("***********************************************\n");
+		System.out.printf("%-15s%15.3f%15.3f\n", "INVESTMENT", (double)money, THcoin);
+		System.out.printf("%-15s%15.3f%15.3f\n", "RETURNS", income, THcoin_income);
+		System.out.printf("%-15s%13.3f%15.3f\n", "REMAINING CAPITAL", money_currently, THCoin_currently);
+	}
+}

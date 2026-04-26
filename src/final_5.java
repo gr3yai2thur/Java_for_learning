@@ -35,10 +35,10 @@ class final_5
 			}
 			
 			for(;;){
-				String name = Input("");
+				String name = Input("Enter name: ");
 				if(name.equalsIgnoreCase("stop")) break;
-				double price = Double.parseDouble(Input(""));
-				double saleP = Double.parseDouble(Input(""));
+				double price = Double.parseDouble(Input("Enter price: "));
+				double saleP = Double.parseDouble(Input("Enter sale: "));
 
 				double sale = getSale(price, saleP);
 				double pay = getPay(price, saleP);

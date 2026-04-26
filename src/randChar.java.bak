@@ -14,20 +14,17 @@ public class randChar {
 
         for (int i = 0; i < data.length; i++) {
 			rd = rand.nextInt(26);
-			if(!used[rd])
-			{
+			if(!used[rd]){
 				used[rd] = true;
 				data[i] = (char)('A' + rd);
 			}
-			else
-			{
+			else{
 				i--;
 			}
         }
 		
 		System.out.print("RAND : ");
-		for(int i=0;i<data.length;i++)
-		{
+		for(int i=0;i<data.length;i++){
 			System.out.print(data[i] + " ");
 		}
 		System.out.println();
@@ -35,11 +32,9 @@ public class randChar {
 		Arrays.sort(data);
 		
 		System.out.print("SORT : ");
-		for(int i=data.length-1;i>=0;i--)
-		{
+		for(int i=data.length-1;i>=0;i--){
 			System.out.print(data[i] + " ");
 		}
 		System.out.println();
-
     }
 }
